@@ -15,7 +15,11 @@
     "commands": [
       {
         "command": "tiamat-vscode.helloWorld",
-        "title": "Hello World"
+        "title": "Tiamat: Hello World"
+      },
+      {
+        "command": "tiamat-vscode.chat",
+        "title": "Tiamat: Open Chat"
       }
     ]
   },
