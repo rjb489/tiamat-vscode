@@ -1,71 +1,62 @@
-# tiamat-vscode README
+# Tiamat
 
-This is the README for your extension "tiamat-vscode". After writing up a brief description, we recommend including the following sections.
+Tiamat is a LLM-based conversational agent for VS Code intended for use by novice programming students. To best serve this population, it implements guards to coach, model, and scaffold computational thinking skills.
 
 ## Features
+### Chat Panel
+Use the "Tiamat: Open Chat" command to open the chat with Tiamat. This is what it should look like:
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+![Tiamat Chat Panel](/images/chat_panel.png)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- [VS Code](https://code.visualstudio.com/download)
+- [Node.js with npm/npx](https://nodejs.org/en/download/package-manager)
+
+## For Developers
+
+### Getting Started
+
+Before you get started, make sure you have Node.js, npm/npx, and VS Code installed.
+
+Once you've cloned the repository to your local machine, navigate to the directory and run `npm install` to set up your environment with all of the required packages.
+
+To properly run the extension, it must be compiled and bundled first. To do this, simply run the command:
+
+```
+npm run build
+```
+
+You can also run watch mode, which will automatically recompile the extension whenever you change a file. To do this, simply run the command:
+
+```
+npm run watch
+```
+
+### Running and Debugging the Extension
+
+Once everything is set up, open the project in VS Code. Navigate to the "Run and Debug" tab by clicking the icon or by pressing `Ctrl+Shift+D`. Ensure the "Run Extension" option is selected in the dropdown and click the play button, or press `F5`. A new VS Code window should open up, which will be running the extension.
+
+![Run and Debug Panel](/images/how_to_run.png)
+
+In this new window, try running the Hello World command to make sure the extension is set up correctly. Press `Ctrl+Shift+P` to open the command pallete, and search for the command. A "hello world" message box should appear.
+
+![Running Hello World](/images/hello_world.gif)
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+As of now, this extension does not contribute any settings.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None yet.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+This project is a Work In Progress.
 
-### 1.0.0
+## Following Extension Guidelines
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+Ensure that you've read through the extensions guidelines and follow the best practices for developing this extension.
 
 * [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
