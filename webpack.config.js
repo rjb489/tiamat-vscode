@@ -8,7 +8,7 @@ module.exports = {
     filename: 'bundle.js', // The bundled JS file to load in the webview
   },
   resolve: {
-    extensions: ['.js'], // Resolve JavaScript files
+    extensions: ['.js', '.jsx'], // Resolve JavaScript files
   },
   module: {
     rules: [
@@ -33,5 +33,7 @@ module.exports = {
       template: './src/chat_app/index.html', // The HTML template to use
     }),
   ],
+  watch: true,
   mode: 'development',
+  devtool: 'source-map'
 };
