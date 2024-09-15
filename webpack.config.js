@@ -33,7 +33,6 @@ module.exports = {
       template: './src/chat_app/index.html', // The HTML template to use
     }),
   ],
-  watch: true,
   mode: 'development',
   devtool: 'source-map'
 };
