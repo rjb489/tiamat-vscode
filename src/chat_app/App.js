@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Message from "./Message";
 import './App.css'; // Import the CSS file
 
 const App = () => {
     const [prompt, setPrompt] = useState("");
+    const [testMode, setTestMode] = useState(false);
     const [messageHistory, setMessageHistory] = useState([]);
     const [enabled, setEnabled] = useState(true);
 
+    const testMessages = [
+        "This is a test message.",
+        "Here's a random response.",
+        "I'm in test mode, no API calls here!",
+        "Preset message #4",
+        "Another test response!"
+      ];
+
     const queryAssistant = async (msg) => {
-        try {
-            const response = await axios.post('http://127.0.0.1:8000/v1/assistant/prompt', {
-                message: msg,
-                session_id: 'vscode',
-            });
-            return response.data.answer;
-        } catch (error) {
-            console.error('Error:', error);
-            return error.message;
+        if (testMode === true) {
+            return testMessages[Math.floor(Math.random() * testMessages.length)];
+        } else {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/v1/assistant/prompt', {
+                    message: msg,
+                    session_id: 'vscode',
+                });
+                return response.data.answer;
+            } catch (error) {
+                console.error('Error:', error);
+                return error.message;
+            }
         }
     };
 
@@ -36,9 +50,15 @@ const App = () => {
 
     return (
         <div className="conversation">
+            <label>Test Mode:</label>
+            <input className="test-mode"
+                type="checkbox"
+                value={testMode}
+                onChange={(event) => setTestMode(event.target.value)}
+            />
             <div className="messages">
                 {messageHistory.map((message, index) => (
-                    <p className="message" key={index}>{message.speaker}: {message.content}</p>
+                    <Message speaker={message.speaker} content={message.content} />
                 ))}
             </div>
             <input className="user-input"
