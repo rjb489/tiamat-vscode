@@ -1,3 +1,17 @@
 .message {
-    color: black;
+    color: #000;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center; /* Align the speaker and message content vertically */
+}
+
+.message-line {
+    margin: 0;
+    display: inline;
+}
+
+.message-content {
+    display: inline;
+    margin-left: 8px; /* Add space between the speaker and the message */
+    white-space: pre-wrap; /* Ensure proper text wrapping */
 }

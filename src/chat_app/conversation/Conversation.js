@@ -13,7 +13,7 @@ const Conversation = () => {
         "This is a test message.",
         "Here's a random response.",
         "I'm in test mode, no API calls here!",
-        "Preset message #4",
+        "Hello! Here is a **bold** text, an *italicized* word, and a [link](https://www.example.com).",
         "Another test response!"
       ];
 
