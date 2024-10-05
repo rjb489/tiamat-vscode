@@ -1,11 +1,18 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import "./Message.css";
 
 const Message = (props) => {
     return (
         <div className="message">
-            <p className="speaker">{props.speaker}</p>
-            <p className="content">{props.content}</p>
+            <p className="message-line">
+                <strong>{props.speaker}:</strong> 
+                <span className="message-content">
+                    <ReactMarkdown disallowedElements={['p']} unwrapDisallowed={true}>
+                        {props.content}
+                    </ReactMarkdown>
+                </span>
+            </p>
         </div>
     );
 };
