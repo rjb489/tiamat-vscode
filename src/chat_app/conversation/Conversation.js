@@ -48,6 +48,12 @@ const Conversation = () => {
         }
     };
 
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    };
+
     return (
         <div className="conversation">
             <div className="test-mode">
@@ -69,6 +75,7 @@ const Conversation = () => {
                     placeholder="Type your message here"
                     value={prompt}
                     onChange={(event) => setPrompt(event.target.value)}
+                    onKeyDown={handleKeyDown}
                 />
                 <button className="send-button" onClick={sendMessage}>Send</button>
             </div>
