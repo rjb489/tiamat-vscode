@@ -38,19 +38,19 @@ const Conversation = () => {
         if (enabled && prompt.trim()) {
             setEnabled(false);
 
-            setMessageHistory((prevMessages) => [...prevMessages, {speaker: "You", content: prompt.trim()}]);
+            setMessageHistory((prevMessages) => [{speaker: "You", content: prompt.trim()}, ...prevMessages]);
             setPrompt("");
 
             let response = await queryAssistant(prompt.trim());
-            setMessageHistory((prevMessages) => [...prevMessages, {speaker: "Tiamat", content: response}]);
+            setMessageHistory((prevMessages) => [{speaker: "Tiamat", content: response}, ...prevMessages]);
 
             setEnabled(true);
         }
     };
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = async (event) => {
         if (event.key === "Enter") {
-            sendMessage();
+            await sendMessage();
         }
     };
 
@@ -71,7 +71,7 @@ const Conversation = () => {
                 ))}
             </div>
             <div className="input-section">
-                <input className="user-input"
+                <textarea className="user-input"
                     placeholder="Type your message here"
                     value={prompt}
                     onChange={(event) => setPrompt(event.target.value)}

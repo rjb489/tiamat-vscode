@@ -4,7 +4,7 @@ import "./Message.css";
 
 const Message = (props) => {
     return (
-        <div className="message">
+        <div className={`message ${props.speaker}`}>
             <p className="message-line">
                 <strong>{props.speaker}:</strong> 
                 <span className="message-content">
