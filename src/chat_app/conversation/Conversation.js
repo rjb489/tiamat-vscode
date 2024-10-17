@@ -55,6 +55,20 @@ const Conversation = () => {
         }
     };
 
+    const exportConversation = () => {
+        const textContent = messageHistory
+        .map(message => `${message.speaker}: ${message.content}`)
+        .reverse()
+        .join('\n');
+    
+    const blob = new Blob([textContent], { type: 'text/plain'});
+    const link = document.createElement('a');
+
+    link.href = URL.createObjectURL(blob);
+    link.download = 'conversation.txt';
+    link.click();
+    };
+
     return (
         <div className="conversation">
             <div className="test-mode">
@@ -79,6 +93,7 @@ const Conversation = () => {
                     onKeyDown={handleKeyDown}
                 />
                 <button className="send-button" onClick={sendMessage}>Send</button>
+                <button className='export-button' onClick={exportConversation}>Export</button>
             </div>
         </div>
     );

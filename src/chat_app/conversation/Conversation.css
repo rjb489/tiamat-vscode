@@ -42,6 +42,17 @@
     border-radius: 5px;
 }
 
+.export-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
 .test-mode {
     display: flex;
 }
