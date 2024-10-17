@@ -1,17 +1,33 @@
 .message {
+    background-color: rgb(161, 158, 158);
+    width: fit-content;
+    min-width: 40%;
+    max-width: 80%;
+    border: none;
+    border-radius: 5px;
     color: #000;
-    display: flex;
     margin-bottom: 10px;
-    align-items: center; /* Align the speaker and message content vertically */
+    padding: 5px;
+    font-size: 14px;
 }
 
-.message-line {
-    margin: 0;
-    display: inline;
+.message-speaker {
+    font-weight: bold;
+    margin: 5px;
 }
 
 .message-content {
-    display: inline;
-    margin-left: 8px; /* Add space between the speaker and the message */
-    white-space: pre-wrap; /* Ensure proper text wrapping */
+    display: block;
+    white-space: pre-wrap;
+    margin: 5px;
+}
+
+/* Style for specific speakers */
+.You {
+    align-self: flex-end;
+    background-color: rgb(115, 194, 247);
+}
+
+.Tiamat {
+    align-self: flex-start;
 }

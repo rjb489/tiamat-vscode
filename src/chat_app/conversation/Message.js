@@ -5,14 +5,10 @@ import "./Message.css";
 const Message = (props) => {
     return (
         <div className={`message ${props.speaker}`}>
-            <p className="message-line">
-                <strong>{props.speaker}:</strong> 
-                <span className="message-content">
-                    <ReactMarkdown disallowedElements={['p']} unwrapDisallowed={true}>
-                        {props.content}
-                    </ReactMarkdown>
-                </span>
-            </p>
+            <p className="message-speaker">{props.speaker}</p>
+            <ReactMarkdown className="message-content" disallowedElements={['p']} unwrapDisallowed={true}>
+                    {props.content}
+            </ReactMarkdown>
         </div>
     );
 };
