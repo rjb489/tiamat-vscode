@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Message from "./Message";
-import { Box, Button, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import { Box, Checkbox, FormControlLabel, TextField } from '@mui/material';
 
 const Conversation = () => {
     const [prompt, setPrompt] = useState("");
@@ -10,9 +10,9 @@ const Conversation = () => {
     const [enabled, setEnabled] = useState(true);
 
     const testMessages = [
-        "**Hello!** This is a *quick test* with a [link](https://example.com).",
-        "Testing **bold text** and *italic text*!",
-        "Markdown works great!"
+        "Here’s a **test message** with some `inline code`.",
+        "Let's try another example with a [link](https://example.com).",
+        "Here's a code block:\n\n```javascript\nconsole.log('Hello World!');\n```"
     ];
 
     const sendMessage = async () => {
@@ -38,7 +38,16 @@ const Conversation = () => {
     };
 
     return (
-        <Box sx={{ width: '100%', maxWidth: 700, margin: 'auto', mt: 5, p: 2 }}>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                height: '100vh',
+                p: 2,
+                boxSizing: 'border-box',
+            }}
+        >
             <FormControlLabel
                 control={
                     <Checkbox
@@ -47,16 +56,21 @@ const Conversation = () => {
                     />
                 }
                 label="Test Mode"
+                sx={{ alignSelf: 'flex-start', mb: 2 }}
             />
-            <Box sx={{ 
-                height: 400, 
-                overflowY: 'auto', 
-                border: '1px solid #ddd', 
-                borderRadius: 2, 
-                p: 2,
-                backgroundColor: '#f9f9f9',
-                mb: 2
-            }}>
+            <Box
+                sx={{
+                    flex: 1,
+                    width: '100%',
+                    maxWidth: '800px',
+                    overflowY: 'auto',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: 2,
+                    p: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                    minHeight: 0,
+                }}
+            >
                 {messageHistory.map((message, index) => (
                     <Message key={index} speaker={message.speaker} content={message.content} />
                 ))}
@@ -70,12 +84,22 @@ const Conversation = () => {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={handleKeyDown}
-                sx={{ mb: 2 }}
+                InputProps={{
+                    sx: {
+                        color: 'white',  // White text for input
+                        '&::placeholder': {
+                            color: 'rgba(255, 255, 255, 0.5)',  // Light grey for placeholder
+                        },
+                    },
+                }}
+                sx={{
+                    mt: 2,
+                    width: '100%',
+                    maxWidth: '800px',
+                    borderRadius: 1,
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                }}
             />
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button variant="contained" onClick={sendMessage} sx={{ px: 4 }}>Send</Button>
-                <Button variant="outlined">Export</Button>
-            </Box>
         </Box>
     );
 };

@@ -1,29 +1,39 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Box, Typography, Divider } from '@mui/material';
 
 const Message = (props) => {
     return (
-        <Card 
-            sx={{ 
-                mb: 1, 
-                boxShadow: 3, 
-                borderRadius: 2, 
-                backgroundColor: props.speaker === 'You' ? '#e3f2fd' : '#fce4ec',
-                maxWidth: '90%',
-                marginLeft: props.speaker === 'You' ? 'auto' : '0'
-            }}
-        >
-            <CardContent>
-                <Typography 
-                    variant="subtitle2" 
-                    sx={{ fontWeight: 'bold', color: 'text.secondary' }}
+        <>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    maxWidth: '750px',
+                    p: 1.5,
+                    borderRadius: 2,
+                    boxShadow: 1,
+                    mb: 1.5,
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxSizing: 'border-box'
+                }}
+            >
+                <Typography
+                    sx={{
+                        fontSize: 13,
+                        fontWeight: 'bold',
+                        color: 'text.secondary',
+                        mb: 0.5
+                    }}
                 >
                     {props.speaker}
                 </Typography>
                 <ReactMarkdown>{props.content}</ReactMarkdown>
-            </CardContent>
-        </Card>
+            </Box>
+            <Divider sx={{ width: '100%', maxWidth: '750px', mb: 2 }} />
+        </>
     );
 };
 
