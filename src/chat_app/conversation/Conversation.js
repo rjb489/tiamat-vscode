@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Message from "./Message";
-import { Box, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import { Box, Checkbox, FormControlLabel, TextField, IconButton, InputAdornment } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 const Conversation = () => {
     const [prompt, setPrompt] = useState("");
@@ -44,7 +45,7 @@ const Conversation = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 height: '100vh',
-                p: 2,
+                p: 0,
                 boxSizing: 'border-box',
             }}
         >
@@ -56,7 +57,7 @@ const Conversation = () => {
                     />
                 }
                 label="Test Mode"
-                sx={{ alignSelf: 'flex-start', mb: 2 }}
+                sx={{ alignSelf: 'flex-start', mb: 2, ml: 2 }}
             />
             <Box
                 sx={{
@@ -64,10 +65,8 @@ const Conversation = () => {
                     width: '100%',
                     maxWidth: '800px',
                     overflowY: 'auto',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: 2,
                     p: 2,
-                    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                    backgroundColor: 'transparent',  // No background for seamless look
                     minHeight: 0,
                 }}
             >
@@ -86,18 +85,37 @@ const Conversation = () => {
                 onKeyDown={handleKeyDown}
                 InputProps={{
                     sx: {
-                        color: 'white',  // White text for input
+                        color: 'white',
                         '&::placeholder': {
-                            color: 'rgba(255, 255, 255, 0.5)',  // Light grey for placeholder
+                            color: 'rgba(255, 255, 255, 0.5)',
                         },
+                        borderRadius: 0,  // Remove rounded corners to make it flush
                     },
+                    endAdornment: (
+                        <InputAdornment position="end">
+                            <IconButton
+                                onClick={sendMessage}
+                                edge="end"
+                                disabled={!prompt.trim()}
+                                sx={{
+                                    color: 'rgba(255, 255, 255, 0.8)',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    }
+                                }}
+                            >
+                                <SendIcon />
+                            </IconButton>
+                        </InputAdornment>
+                    )
                 }}
                 sx={{
-                    mt: 2,
                     width: '100%',
                     maxWidth: '800px',
-                    borderRadius: 1,
                     backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.1)',  // Slight separation from message area
+                    m: 0,  // Remove margins
+                    p: 0,  // Remove padding
                 }}
             />
         </Box>
